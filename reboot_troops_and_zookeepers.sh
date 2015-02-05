@@ -1,4 +1,4 @@
-set +e
+set +e -x
 OS_TENANT_NAME="jns_monkeys"
 
 for i in $(seq $START_ID $STOP_ID); do 
