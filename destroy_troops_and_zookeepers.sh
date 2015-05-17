@@ -2,6 +2,7 @@
 OS_TENANT_NAME="jns_monkeys"
 SSH="ssh -o StrictHostKeyChecking=no $PM sudo"
 
+rm ~/.ssh/known_hosts
 $SSH /etc/init.d/apache2 stop
 for i in $(seq $START_ID $STOP_ID); do 
   nova delete zookeeper$i;
