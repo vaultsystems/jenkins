@@ -1,6 +1,6 @@
 #!/bin/bash -x
 OS_TENANT_NAME="jns_monkeys"
-SSH="ssh $PM sudo"
+SSH="ssh -o StrictHostKeyChecking=no $PM sudo"
 
 $SSH /etc/init.d/apache2 stop
 for i in $(seq $START_ID $STOP_ID); do 
