@@ -1,6 +1,6 @@
 #!/bin/bash -x
 OS_TENANT_NAME="jns_monkeys"
-TROOP_IMAGE=`glance image-list | grep "Windows 2012 R2 autobuild" | head -1 | awk '{ print $2}'`
+TROOP_IMAGE=`glance image-list | grep "Windows 2012 R2 autobuild" | sort -u -k8 | tail -1 | awk '{ print $2}'
 ZK_IMAGE=`glance image-list | grep "puppetclient" | head -1 | awk '{ print $2}'`
 NET=d9e502bb-b6ca-4a5c-8eb6-3e3473bf7082
 
