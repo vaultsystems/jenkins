@@ -4,9 +4,8 @@ SSH="ssh -o StrictHostKeyChecking=no $PM sudo"
 
 rm ~/.ssh/known_hosts
 $SSH /etc/init.d/apache2 stop
-for i in $(seq $START_ID $STOP_ID); do 
-  nova delete zookeeper$i;
-  nova delete troop$i;
+for i in $(seq $START_ID $STOP_ID); do
+  nova list | grep -e zookeeper$i -e troop$i; awk '{print $2}' | xargs nova delete
   $SSH puppet cert clean troop$i.vaultsystems
   $SSH puppet cert clean zookeeper$i.vaultsystems
 done
